@@ -1,0 +1,55 @@
+.leave-req{
+    .leave-req-card{
+        .wrapper{
+            display: flex;
+            flex-direction: row;
+            .from-to-sec{
+                width: 55%;
+                display: flex;
+                justify-content: center;
+                // flex-direction: column;
+            border-right: 1px solid #d9d9d9;
+            .ant-form.ant-form-horizontal{
+                width: 70%;
+            }
+            .ant-calendar-picker{
+                width: 100%;
+            }
+            .ant-calendar-picker-input.ant-input{
+                height: 50px;
+            }
+            .ant-select-selection--multiple{
+                border: none;
+                border-bottom: 1px solid #d9d9d9;
+            }
+            .ant-select-selection__rendered:focus{
+                outline: #d9d9d9
+            }
+            }
+            .calender-notify{
+                width: 45%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding-left: 15px;
+                .cal{
+                    border-bottom: 1px solid #d9d9d9;
+
+                }
+                .title{
+                    display: 'flex'; 
+                    justify-content: center;
+                    margin-bottom: '20px';
+                    font-size: 18px;
+                    font-weight: 400
+                }
+                .team-list{
+                    display: flex;
+                    .ant-list.ant-list-split{
+                        width: 100%
+                    }
+                }
+            }
+        }
+    }
+}

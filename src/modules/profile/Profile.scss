@@ -1,0 +1,48 @@
+.profile{
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    height: 100vh;
+    padding: 16px;
+    .profile-image{
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        .avtr{
+            display: flex;
+            width: 100%;
+            justify-content: center;
+        }
+        .name{
+            justify-content: center;
+            display: flex;
+            font-size: 38px;
+            font-weight: 300;
+            width: 100%
+        }
+    }
+    .about-main{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        .about-title{
+            font-size: 28px;
+            color: #000;
+            font-weight: 400;
+        }
+        .about-body{
+            display: flex;
+            flex-direction: column;
+            font-size: 18px;
+            border-top: 1px solid #ccc;
+            .row{
+                margin-top: 5px;
+                .subtitle{
+                    font-weight: 400;
+                    color: #000;
+                    
+                }
+            }
+        }
+    }
+}

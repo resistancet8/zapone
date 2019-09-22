@@ -1,0 +1,28 @@
+.header {
+    background: #fff;
+    border: 1px solid #fbfbfb;
+    padding: 0;
+  
+    .trigger {
+        font-size: 18px;
+        line-height: 64px;
+        padding: 0 24px;
+        cursor: pointer;
+        transition: color 0.3s
+    }
+  
+    .trigger:hover {
+      color: #454546;
+    }
+  
+    .user-avt {
+      float: right;
+      padding: 0px 25px 0px 5px;
+    }
+    .usersname{
+      float: right;
+      margin-right: 10px;
+      font-weight: 500;
+    }
+  }
+  
