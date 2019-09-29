@@ -1,0 +1,26 @@
+.sidebar-header-logo {
+  height: 64px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background: #012347;
+  color: #fff;
+}
+
+.ant-layout-sider-children {
+  background: #003366;
+}
+
+.ant-menu-item {
+  background: #003366 !important;
+  margin: 0 !important;
+}
+
+.ant-menu-item a {
+  color: #038fde;
+}
+
+.ant-menu-item-selected > a, .ant-menu-item > a:hover {
+  color: #fa8c15;
+}

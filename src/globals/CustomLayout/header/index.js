@@ -8,7 +8,7 @@ const { Header } = Layout;
 
 const MainHeader = ({ globals, history }) => {
   const logout = () => {
-    globals.setLogin(false)
+    globals.setLogin(false) 
   }
   const onProfile = () => {
     history.push("/profile")
@@ -35,7 +35,6 @@ const MainHeader = ({ globals, history }) => {
       </Popover>
     </div>
     <span className="usersname">{Boolean(globals.user) && globals.user.firstName}</span>
-
   </Header>);
 };
 

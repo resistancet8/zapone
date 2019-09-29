@@ -25,7 +25,9 @@ const getActiveKey = (props, contents) => {
 const MainSider = props => {
   return (
     <Sider trigger={null} collapsible collapsed={props.globals.collapsed}>
-      <div className="logo" />
+      <div className="sidebar-header-logo">
+        <span>Zapone</span>
+      </div>
       <Menu
         theme="light"
         mode="inline"
@@ -38,13 +40,13 @@ const MainSider = props => {
             <SubMenu
               key={content.key}
               title={
-                <span>
+                <span> 
                   <Icon type={content.icon} />
                   <span>{content.name}</span>
                 </span>
               }
             >
-              {content.children.map(child => {
+              {content.children.map(child => {  
                 const toShowChild = content.role.includes("role");
                 return toShowChild ? (
                   <Menu.Item key={child.key}>

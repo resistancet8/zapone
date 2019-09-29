@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { observer, inject } from "mobx-react";
 import { Redirect } from "react-router-dom";
-import Layout from "../layout";
+import CustomLayout from "../CustomLayout";
 import { Spin } from "antd";
 
 export default function Protected(Children) {
@@ -14,9 +14,9 @@ export default function Protected(Children) {
                 <div className="authComponent">
                     {isLoggedIn ? (
                         <Spin spinning={loading}>
-                            <Layout>
+                            <CustomLayout>
                                 <Children {...this.props} />
-                            </Layout>
+                            </CustomLayout>
                         </Spin>
                     )
                         : (

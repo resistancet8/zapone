@@ -1,6 +1,6 @@
 import { observable } from "mobx";
 
-class GlobalStore {
+class DashboardStore {
   @observable inputValue = "";
 
   onChange = e => {
@@ -8,4 +8,4 @@ class GlobalStore {
   };
 }
 
-export default GlobalStore;
+export default DashboardStore;

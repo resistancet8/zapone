@@ -2,19 +2,17 @@ import React, { Component } from "react";
 import { observer, inject } from "mobx-react";
 import "./Dashboard.scss";
 
-@inject("dashboard")
-@observer
 class Dashboard extends Component {
   render() {
     const {
-      globals: { user }
-    } = this.props;
+      globals: { userInfo }
+    } = this.props; 
     return (
       <div className="dashboard">
-        <div className="welcome-text">Welcome, {user && user.firstName}!</div>
+        <div className="welcome-text">Welcome, {userInfo && userInfo.firstName}!</div>
       </div>
     );
   }
 }
 
-export default Dashboard;
+export default inject('globals')(observer(Dashboard));

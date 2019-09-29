@@ -14,6 +14,14 @@ const SiderContent = [
     key: "leaveRequest",
     children: [],
     route: "leave-request"
+  },
+  {
+    role: ["role"],
+    icon: "user",
+    name: "Users",
+    key: "users",
+    children: [],
+    route: "users"
   }
 ];
 

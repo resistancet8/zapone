@@ -4,6 +4,7 @@ import AuthRoutes from "../globals/hoc/AuthRoutes";
 
 const Dashboard = lazy(() => import("./dashboard"));
 const LeaveRequest = lazy(() => import("./leaveRequest"));
+const UsersList = lazy(() => import("./UsersList"));
 
 const Moduleroutes = props => {
   return (
@@ -12,7 +13,8 @@ const Moduleroutes = props => {
         <Route path="/" exact render={() => <Dashboard {...props} />} />
         <Route path="/dashboard" render={() => <Dashboard {...props} />} />
         <Route path="/leave-request" render={() => <LeaveRequest {...props} />} />
-      </Switch>
+        <Route path="/users" render={() => <UsersList {...props} />} />
+      </Switch> 
     </Suspense>
   );
 };
