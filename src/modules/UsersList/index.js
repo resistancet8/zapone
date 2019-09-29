@@ -3,6 +3,7 @@ import { observer, inject } from "mobx-react";
 import { List, Button, Skeleton, Row, Col, Typography, Drawer, Form, Icon, Input, Select, DatePicker } from 'antd';
 import UsersServices from '../../services/UsersServices';
 import ProfileForm from './ProfileForm';
+import truncate from 'truncate';
 import './UsersList.scss'
 
 const { Title } = Typography;
@@ -51,7 +52,7 @@ class Profile extends React.Component {
 
     const { getFieldDecorator } = this.props.form;
 
-    let tempUsers = [{ firstName: "Naveen", lastName: "Kumar", profile: "https://blog.usertesting.com/wp-content/uploads/2016/06/aiden-01.png", phone: "9945126164", desc: "Vestibulum otie varius sit amet quis tellus. Quisque fermentum sapien at massa porta eleifend. Mauris tincidunt pretium eros vitae elementum. Sed commodo ullamcorper luctus." }, { firstName: "Mala", profile: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQzBWuwU_2y5_RBDl4eSOFjTC-Okc092O-fg1IDF1PhpU9vPN9', lastName: "Naidu", phone: "8877665544", desc: "Lorem ipsum dolor sit amet, consectetur adaugue. Fusce augue dolor, posuere convallis pellentesque vitae, tristique sed odio. In feugiat mauris vel ex efficitur" }, { firstName: "Avinash", profile: "https://s3.amazonaws.com/37assets/svn/1024-original.1e9af38097008ef9573f03b03ef6f363219532f9.jpg", lastName: "CZ", phone: "8877665544", desc: "Lorem ipsum dolor sit amet, consectetur adaugue. Fusce augue dolor, posuere convallis pellentesque vitae, tristique sed odio. In feugiat mauris vel ex efficitur" }];
+    let tempUsers = [{ firstName: "Naveen", lastName: "Kumar", profile: "https://s3.amazonaws.com/37assets/svn/1024-original.1e9af38097008ef9573f03b03ef6f363219532f9.jpg", phone: "9945126164", designation: "Trainee", desc: "Vestibulum otie varius sit amet quis tellus. Quisque fermentum sapien at massa porta eleifend. Mauris tincidunt pretium eros vitae elementum. Sed commodo ull pretium eros vitae elementum. Sed commodo ull pretium eros vitae elementum. Sed commodo ull pretium eros vitae elementum. Sed commodo ull pretium eros vitae elementum. Sed commodo ullamcorper luctus." }, { firstName: "Mala", profile: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQzBWuwU_2y5_RBDl4eSOFjTC-Okc092O-fg1IDF1PhpU9vPN9', lastName: "Naidu",designation: "Sr. Web Developer", phone: "8877665544", desc: "Lorem ipsum dolor sit amet, consectetur adaugue. Fusce augue dolor, posuere convallis pellentesque vitae, tristique sed odio. In feugiat mauris vel ex efficitur" }, { firstName: "Avinash", profile: "https://s3.amazonaws.com/37assets/svn/1024-original.1e9af38097008ef9573f03b03ef6f363219532f9.jpg", lastName: "CZ", phone: "8877665544", designation: "Sr. DevOps", desc: "Lorem ipsum dolor sit amet, consectetur adaugue. Fusce augue dolor, posuere convallis pellentesque vitae, tristique sed odio. In feugiat mauris vel ex efficitur" }];
 
     let { users: { usersList } } = this.props;
 
@@ -60,8 +61,7 @@ class Profile extends React.Component {
       <Row type="flex" align="middle" style={{ flexFlow: 'nowrap' }}>
         <Col span={4}><Title level={3}>List of Users</Title></Col>
         <Col offset={16} span={4} >
-          <Button className="inner-header-anchors" onClick={this.showDrawer} type="default" shape="circle" icon="plus-circle">
-          </Button>
+          <Icon title="Add new designation" onClick={this.showDrawer} type="plus-circle" theme="twoTone" twoToneColor="#52c41a" className="inner-header-anchors" style={{fontSize: '22px'}}/>
         </Col>
       </Row>
       <List
@@ -71,17 +71,18 @@ class Profile extends React.Component {
         dataSource={tempUsers}
         renderItem={item => (
           <List.Item
-            actions={[<a key="list-loadmore-edit">edit</a>, <a key="list-loadmore-more">delete</a>]}
+            actions={[<Icon type="edit" theme="twoTone" />, <Icon twoToneColor="#eb2f96" type="delete" theme="twoTone" />]}
           >
             <Skeleton avatar title={false} loading={false} active>
-              <Row>
-                <Col span={2}>
+              <Row className="users-list-item">
+                <Col span={3}>
                   <img className="list-user-image" src={item.profile} />
                 </Col>
-                <Col>
+                <Col span={21}>
                   <div className="desc">
                     <h3>{item.firstName}</h3>
-                    <p>{item.desc}</p>
+                    <p className="item-designation">In <span>{item.designation}</span></p>
+                    <p className="item-description">{truncate(item.desc, 200)}</p>
                   </div>
                 </Col>
               </Row>

@@ -1,10 +1,14 @@
 .users-list .desc h3 {
     font-weight: 800;
     margin-bottom: 8px;
+    font-size: 1.5em;
+    color: #000;
+    letter-spacing: 1px;
 }
 
 .users-list .desc p {
-    font-weight: 700;
+    font-weight: 500;
+    font-size: 1.02em;
 }
 
 .inner-header-anchors {
@@ -15,5 +19,36 @@
 
 .list-user-image {
     border-radius: 50%;
-    width: 85%;
+    height: 100%;
+}
+
+.users-list-item {
+    height: 100px;
+    width: 100%;
+}
+
+.users-list-item .ant-col{
+    height: 100%;
+}
+
+.demo-loadmore-list {
+    width: 95%;
+}
+
+.item-designation {
+    color: #000;
+    margin-top: -8px;
+    margin-bottom: 5px;
+    font-size: 10px;
+    text-transform: lowercase;
+}
+
+.item-designation span {
+    color: #038fde;
+    font-weight: bold;
+    text-transform: capitalize;
+    font-size: 15px;
+}
+
+.item-description {
 }

@@ -200,7 +200,7 @@ class ProfileForm extends React.Component {
           <Button onClick={this.props.onClose} style={{ marginRight: 8 }}>
             Cancel
             </Button>
-          <Button loading={this.state.saving} htmlType="submit" onClick={this.handleSubmit} className="login-form-button" type="primary">
+          <Button style={{background: '#003366'}} loading={this.state.saving} htmlType="submit" onClick={this.handleSubmit} className="login-form-button" type="primary">
             Submit
             </Button>
         </div>
