@@ -4,7 +4,7 @@ import AuthRoutes from "../globals/hoc/AuthRoutes";
 
 const Dashboard = lazy(() => import("./dashboard"));
 const LeaveRequest = lazy(() => import("./leaveRequest"));
-const UsersList = lazy(() => import("./UsersList"));
+const UsersList = lazy(() => import("./UsersList/index"));
 
 const Moduleroutes = props => {
   return (
