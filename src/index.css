@@ -10,3 +10,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.no-borders {
+  border: none !important;
+}
+
+.ant-drawer.ant-drawer-open {
+  /* z-index: 5000; */
+}
+
+.ant-message {
+  /* z-index: 10000 !important; */
+}
