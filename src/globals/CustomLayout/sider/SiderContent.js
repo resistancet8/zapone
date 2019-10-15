@@ -7,14 +7,14 @@ const SiderContent = [
     children: [],
     route: "dashboard"
   },
-  {
-    role: ["role"],
-    icon: "appstore",
-    name: "Leave Request",
-    key: "leaveRequest",
-    children: [],
-    route: "leave-request"
-  },
+  // {
+  //   role: ["role"],
+  //   icon: "appstore",
+  //   name: "Leave Request",
+  //   key: "leaveRequest",
+  //   children: [],
+  //   route: "leave-request"
+  // },
   {
     role: ["role"],
     icon: "user",

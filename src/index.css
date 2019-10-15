@@ -22,3 +22,10 @@ code {
 .ant-message {
   /* z-index: 10000 !important; */
 }
+
+.center-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}

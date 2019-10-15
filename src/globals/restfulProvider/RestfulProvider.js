@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const appServiceName = "//13.233.122.231:8080/rest/api/v1";
+const appServiceName = "http://13.233.122.231:8080/rest/api/v1";
 
 class RestfulProvider {
 
