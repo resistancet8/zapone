@@ -7,7 +7,7 @@ const { Option } = Select;
 const { Step } = Steps;
 
 const stepFields = {
-	1: [ 'firstName', 'lastName', 'gender', 'birthDate', 'address' ],
+	1: [ 'firstName', 'lastName', 'gender', 'birthDate', 'address', 'joiningDate' ],
 	2: [ 'email', 'phone', 'userName', 'password' ],
 	3: [ 'role', 'department', 'designation', 'branch' ]
 };
@@ -50,7 +50,8 @@ class UserForm extends React.Component {
 						branch: values.branch ? { id: values.branch } : undefined,
 						department: values.department ? { id: values.department } : undefined,
 						manager: values.manager ? { id: values.manager } : undefined,
-						birthDate: moment(values.birthDate).format("DD-MM-YYYY")
+						birthDate: moment(values.birthDate).format("DD-MM-YYYY"),
+						joiningDate: moment(values.joiningDate).format("DD-MM-YYYY"),
 					});
 
 					var formData = new FormData();
@@ -137,6 +138,22 @@ class UserForm extends React.Component {
 									{getFieldDecorator('birthDate', {
 										preserve: true,
 										rules: [ { required: true, message: 'Please select Date of Birth' } ]
+									})(
+										<DatePicker
+											format="DD-MM-YYYY"
+											style={{ width: '100%' }}
+											getPopupContainer={(trigger) => trigger.parentNode}
+										/>
+									)}
+								</Form.Item>
+							</Col>
+						</Row>
+						<Row gutter={16}>
+							<Col span={12}>
+								<Form.Item label="Joining Date">
+									{getFieldDecorator('joiningDate', {
+										preserve: true,
+										rules: [ { required: true, message: 'Please select the Joining Date' } ]
 									})(
 										<DatePicker
 											format="DD-MM-YYYY"

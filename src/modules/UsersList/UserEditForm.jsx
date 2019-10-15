@@ -7,8 +7,8 @@ const { Option } = Select;
 const { Step } = Steps;
 
 const stepFields = {
-	1: [ 'firstName', 'lastName', 'gender', 'birthDate', 'address' ],
-	2: [ 'email', 'phone', 'userName' ],
+	1: [ 'firstName', 'lastName', 'gender', 'birthDate', 'address', 'joiningDate' ],
+	2: [ 'email', 'phone' ],
 	3: [ 'role', 'department', 'designation', 'branch' ]
 };
 
@@ -63,17 +63,23 @@ class UserForm extends React.Component {
 				if (!err) {
 					let data = Object.assign({}, values, {
 						createdBy: { id: 1 },
+						id: this.props.userInfo.id,
 						designation: values.designation ? { id: values.designation } : undefined,
 						role: { id: 874641470499567 },
 						branch: values.branch ? { id: values.branch } : undefined,
 						department: values.department ? { id: values.department } : undefined,
-						manager: values.manager ? { id: values.manager } : undefined
+						manager: values.manager ? { id: values.manager } : undefined,
+						birthDate: moment(values.birthDate).format("DD-MM-YYYY"),
+						joiningDate: moment(values.joiningDate).format("DD-MM-YYYY"),
+						password: this.props.userInfo.password,
+						employeeId: this.props.userInfo.employeeId,
+						isActive: values.isActive == 'true' ? true : false,
 					});
 
 					var formData = new FormData();
 					formData.append('user', JSON.stringify(data));
 
-					OrganizationServices.registerUser(formData)
+					OrganizationServices.updateUser(formData)
 						.then((r) => {
 							if (r.type == 'error') {
 								message.warning(r.message);
@@ -86,6 +92,8 @@ class UserForm extends React.Component {
 						.catch((e) => {
 							message.warning(e.message);
 						});
+				} else {
+					console.log(err, "+++")
 				}
 
 				this.setState({ saving: false });
@@ -164,6 +172,22 @@ class UserForm extends React.Component {
 							</Col>
 						</Row>
 						<Row gutter={16}>
+							<Col span={12}>
+								<Form.Item label="Joining Date">
+									{getFieldDecorator('joiningDate', {
+										preserve: true,
+										rules: [ { required: true, message: 'Please select the Joining Date' } ]
+									})(
+										<DatePicker
+											format="DD-MM-YYYY"
+											style={{ width: '100%' }}
+											getPopupContainer={(trigger) => trigger.parentNode}
+										/>
+									)}
+								</Form.Item>
+							</Col>
+						</Row>
+						<Row gutter={16}>
 							<Col span={24}>
 								<Form.Item label="Address">
 									{getFieldDecorator('address', {
@@ -222,7 +246,7 @@ class UserForm extends React.Component {
 								<Form.Item label="Username">
 									{getFieldDecorator('userName', {
 										preserve: true,
-										rules: [ { required: true, message: 'Please enter the username' } ]
+										rules: [ { message: 'Please enter the username' } ]
 									})(
 										<Input
 											disabled

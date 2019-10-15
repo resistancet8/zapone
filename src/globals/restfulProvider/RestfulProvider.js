@@ -46,10 +46,16 @@ class RestfulProvider {
     });
   };
   put = (url, data) => {
-    this.setCommonHeaders();
+    if (localStorage.getItem('user')) {
+      this.setCommonHeaders()
+    }
     return new Promise((resolve, reject) => {
       axios
-        .put(`${appServiceName}/${url}`, data)
+        .put(`${appServiceName}/${url}`, data, {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
         .then(res => {
           resolve(res.data);
         })

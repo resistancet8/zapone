@@ -27,7 +27,7 @@ export const registerUser = (body) => {
 };
 
 export const updateUser = (body) => {
-	return RestfulProvider.post(`user/register`, body);
+	return RestfulProvider.put(`user/update`, body);
 };
 
 export default { getDesignations, getRoles, getBranches, getDepartments, getUsers, registerUser, updateUser }
