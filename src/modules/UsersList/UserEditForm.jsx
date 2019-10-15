@@ -25,6 +25,7 @@ class UserForm extends React.Component {
 			firstName: parsed.firstName,
 			lastName: parsed.lastName,
 			birthDate: moment(parsed.birthDate, 'DD-MM-YYYY'),
+			joiningDate: moment(parsed.joiningDate, 'DD-MM-YYYY'),
 			email: parsed.email,
 			userName: parsed.userName,
 			gender: parsed.gender,

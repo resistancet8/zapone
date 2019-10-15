@@ -22,6 +22,10 @@ export const getUsers = (body) => {
 	return RestfulProvider.get(`user/users/${ORGANIZATION}`);
 };
 
+export const getUser = (id) => {
+	return RestfulProvider.get(`user/get/${id}`);
+};
+
 export const registerUser = (body) => {
 	return RestfulProvider.post(`user/register`, body);
 };
@@ -30,4 +34,4 @@ export const updateUser = (body) => {
 	return RestfulProvider.put(`user/update`, body);
 };
 
-export default { getDesignations, getRoles, getBranches, getDepartments, getUsers, registerUser, updateUser }
+export default { getDesignations, getRoles, getBranches, getDepartments, getUsers, getUser, registerUser, updateUser }

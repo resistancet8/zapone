@@ -5,7 +5,7 @@ const SiderContent = [
     name: "Dashboard",
     key: "dashboard",
     children: [],
-    route: "dashboard"
+    route: "/dashboard"
   },
   // {
   //   role: ["role"],
@@ -18,10 +18,10 @@ const SiderContent = [
   {
     role: ["role"],
     icon: "user",
-    name: "Users",
+    name: "Employee",
     key: "users",
     children: [],
-    route: "users"
+    route: "/users"
   }
 ];
 

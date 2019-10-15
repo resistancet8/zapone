@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'PT Sans' !important;
+  font-family: 'Rubik' !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -28,4 +28,85 @@ code {
   justify-content: center;
   align-items: center;
   height: 100vh;
+}
+
+.display-flex {
+  display: flex;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.ml {
+  margin-left: 10px !important;
+}
+
+.mb {
+  margin-bottom: 10px !important;
+}
+
+.text-muted {
+  color: #6c757d !important;
+}
+
+.no-bg {
+  background: none !important;
+}
+
+.font-bold {
+  font-weight: 500;
+}
+
+.text-dark {
+  color: #292F36;
+}
+
+.half-opacity {
+  opacity: .5 !important;
+}
+
+.rounded-border {
+  border-radius: 10px !important;
+}
+
+.elevated-shadow {
+  cursor: pointer;
+  transition: .5s;
+}
+
+.elevated-shadow:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.no-border {
+  border: none !important;
+}
+
+.custom-alert.green .ant-alert-message {
+  color: #08A045 !important;
+}
+
+.custom-alert.red .ant-alert-message {
+  color: #BF1A2F !important;
+}
+
+.width-50 {
+  width: 50% !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.text-dimmed {
+  color: #bbb;
+}
+
+.font-small {
+  font-size: 12px;
 }

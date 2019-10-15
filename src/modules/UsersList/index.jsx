@@ -1,9 +1,10 @@
 import React from 'react';
 import { observer, inject } from 'mobx-react';
-import { List, Skeleton, Row, Col, Typography, Icon, Avatar, Popover, Button, Steps } from 'antd';
+import { withRouter } from 'react-router-dom';
+import { List, Skeleton, Row, Col, Typography, Icon, Avatar, Popover, Button, Tag, Badge, Card, Spin, Alert } from 'antd';
 import OrganizationServices from '../../services/OrganizationServices';
 import UserForm from './UserForm';
-import truncate from 'truncate';
+import moment from 'moment';
 import './UsersList.scss';
 import AdminForm from './AdminForm';
 import UserEditForm from './UserEditForm';
@@ -15,6 +16,7 @@ class Profile extends React.Component {
 	state = {
 		editMode: false,
 		userInfo: {},
+		userEditIndex: -1,
 		visibleUserForm: false,
 		visibleUserEditForm: false,
 		visibleAdminForm: false,
@@ -64,7 +66,8 @@ class Profile extends React.Component {
 		this.setState({
 			[key]: false,
 			userInfo: {},
-			editMode: false
+			editMode: false,
+			userEditIndex: -1
 		});
 	};
 
@@ -79,13 +82,15 @@ class Profile extends React.Component {
 		this.setState({
 			editMode: true,
 			visibleUserEditForm: true,
-			userInfo: users[index]
+			userInfo: users[index],
+			userEditIndex: index
 		});
 	}
 
 	render() {
 		let { organization: { users } } = this.props;
 
+		users = JSON.parse(JSON.stringify(users));
 		const content = (
 			<List className="add-buttons no-borders">
 				<List.Item className="no-borders">
@@ -135,7 +140,7 @@ class Profile extends React.Component {
 				/>
 				<Row type="flex" align="middle" style={{ flexFlow: 'nowrap' }}>
 					<Col span={4}>
-						<Title level={3}>List of Users</Title>
+						<Title level={3}>All Employees List</Title>
 					</Col>
 					<Col offset={16} span={4}>
 						<Popover placement="left" content={content}>
@@ -150,60 +155,52 @@ class Profile extends React.Component {
 						</Popover>
 					</Col>
 				</Row>
-				<List
-					className="demo-loadmore-list"
-					loading={!users}
-					itemLayout="horizontal"
-					dataSource={users}
-					renderItem={(item, index) => {
-						if (!item.isActive) return;
+				<Card bordered={false} className="mb no-bg text-muted font-bold half-opacity">
+					<Row>
+						<Col span={3}>Name</Col>
+						<Col span={3}>Email</Col>
+						<Col span={3}>Department</Col>
+						<Col span={3}>Designation</Col>
+						<Col span={3}>Manager</Col>
+						<Col span={3}>Date of Birth</Col>
+						<Col span={3}>Status</Col>
+						<Col span={3}>Action</Col>
+					</Row>
+				</Card>
+				{users && users.length ? (
+					users.map((user, index) => {
 						return (
-							<List.Item
-								actions={[
-									<Icon
-										type="edit"
-										theme="twoTone"
-										style={{ marginRight: '10px' }}
-										onClick={(e) => {
-											this.handleUpdate(index);
-										}}
-									/>
-								]}
-							>
-								<Skeleton avatar title={false} loading={item.name} active>
-									<Row className="users-list-item">
-										<Col
-											type="flex"
-											align="middle"
-											style={{ flexFlow: 'nowrap' }}
-											span={2}
-											className="list-user-image-parent"
-										>
-											{item.profile ? (
-												<img className="list-user-image" src={item.profile} />
-											) : (
-												<Avatar size={64} icon="user" />
-											)}
-										</Col>
-										<Col span={22}>
-											<div className="desc">
-												<h3>{item.firstName}</h3>
-												<p className="item-designation">
-													<span>{item.designation.name}</span> In{' '}
-													<span>{item.department.name}</span>
-												</p>
-												<p className="item-description">{truncate(item.desc, 200)}</p>
-											</div>
-										</Col>
-									</Row>
-								</Skeleton>
-							</List.Item>
+							<Card bordered={false} className="mb text-dark font-bold elevated-shadow rounded-border">
+								<Row type="flex">
+									<Col span={3}>
+										{user.profile ? (
+											<img className="list-user-image" src={user.profile} />
+										) : (
+											<Avatar size={32} icon="user" />
+										)}{' '}
+										<span className="ml">
+											{user.firstName} {user.lastName}
+										</span>
+									</Col>
+									<Col span={3}>{user.email}</Col>
+									<Col span={3}>{user.department.name}</Col>
+									<Col span={3}>{user.designation.name}</Col>
+									<Col span={3}>{user.manager.name ? user.manager.name: 'Not Assigned'}</Col>
+									<Col span={3}>{moment(user.birthDate, 'DD-MM-YYYY').format("Do MMM YY")}</Col>
+									<Col span={3}><Alert className={`custom-alert ${user.isActive ? 'green': 'red'} no-border width-50 text-center`} message={user.isActive ? 'Active': 'Inactive'} type={user.isActive ? 'success': 'error'} /></Col>
+									<Col span={3}><Button onClick={e => this.handleUpdate(index)} shape="circle" className="no-border" icon="edit" size={"large"}/><Button onClick={e => this.props.history.push(`/users/${user.id}/show`)} shape="circle" className="no-border" icon="eye" size={"large"}/></Col>
+								</Row>
+							</Card>
 						);
-					}}
-				/>
+					})
+				) : (
+					<div className="display-flex justify-center">
+						<Spin indicator={<Icon type="loading" style={{ fontSize: 24 }} spin />} />{' '}
+					</div>
+				)}
 			</div>
 		);
 	}
 }
 
-export default Profile;
+export default withRouter(Profile);

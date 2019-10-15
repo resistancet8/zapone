@@ -5,7 +5,7 @@ class OrganizationStore {
   @observable departments;
   @observable branches;
   @observable designations;
-  @observable users;
+  @observable users = [];
 
   addRoles = list => {
     this.roles = list;
