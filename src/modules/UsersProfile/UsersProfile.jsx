@@ -3,6 +3,7 @@ import { Avatar, Card, Row, Col, Icon, Divider } from 'antd';
 import moment from 'moment';
 import { withRouter } from 'react-router-dom';
 import { getUser } from './../../services/OrganizationServices';
+import NumberFormat from 'react-number-format';
 
 import './UsersProfile.css';
 
@@ -67,7 +68,7 @@ class UsersProfile extends React.Component {
 								</Col>
 								<Col span={3}>
 									<div className="text-dark">{email}</div>
-									<div className="text-dark">{phone}</div>
+									<div className="text-dark"><NumberFormat format="+91 (###) ###-####" mask="_" value={phone} displayType={'text'} /></div>
 								</Col>
 								<Col span={1}>
 									<Divider type="vertical" />
